@@ -1,0 +1,13 @@
+# Normalize to LF in the repository; check out native line endings locally.
+# Without this, a file edited on Windows and again on Linux produces a diff
+# claiming every line changed.
+* text=auto eol=lf
+
+# Windows-only scripts must keep CRLF to remain executable.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# Never touch binary content.
+*.jar  binary
+*.png  binary
+*.db   binary
