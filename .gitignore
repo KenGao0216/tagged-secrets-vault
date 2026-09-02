@@ -13,13 +13,11 @@ target/
 Thumbs.db
 .DS_Store
 
-# Local secrets — the KEK lives in the environment (Step 3), never in the repo.
-# If you ever add a .env for local dev, it must stay ignored.
+# Local secrets
 .env
 *.env
 vault.db
 
-# Personal build guide and Claude Code instructions — kept local, not published.
-# Deliberately named individually rather than *.md, so README.md can still be committed.
+
 CLAUDE.md
 project_goal.md
