@@ -16,7 +16,7 @@
   </properties>
 
   <dependencies>
-    <!-- HTTP layer. Deliberately not Spring Boot. done manually -->
+    <!-- HTTP layer. not Spring Boot. done manually -->
     <dependency>
       <groupId>io.javalin</groupId>
       <artifactId>javalin</artifactId>
@@ -37,6 +37,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.6</version>
+        <configuration>
+          <environmentVariables>
+            <!--This decodes to ASCII string "TEST-ONLY-KEK-NOT-FOR-REAL-USE!!"-->
+            <VAULT_KEK>VEVTVC1PTkxZLUtFSy1OT1QtRk9SLVJFQUwtVVNFISE=</VAULT_KEK>
+          </environmentVariables>
+        </configuration>
       </plugin>
     </plugins>
   </build>
