@@ -29,6 +29,15 @@ public interface SecretRepository {
     Optional<Secret> findById(UUID id) throws StorageException;
 
     /**
+     * Looks up one secret by id, but only if it also carries every tag in requiredTags.
+     *  an empty map is allowed
+     *
+     * @throws IllegalArgumentException if a required tag has a blank key or value
+     * @throws NullPointerException if a required tag has a null key or value
+     */
+    Optional<Secret> findByIdWithTags(UUID id, Map<String, String> requiredTags) throws StorageException;
+
+    /**
      * Finds every secret carrying all of the given tags     
      * 
      * @throws IllegalArgumentException if tagFilters is empty, or contains a blank key or value

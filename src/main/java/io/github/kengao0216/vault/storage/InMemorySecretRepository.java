@@ -32,6 +32,19 @@ public final class InMemorySecretRepository implements SecretRepository {
     }
 
     @Override
+    public Optional<Secret> findByIdWithTags(UUID id, Map<String, String> requiredTags) {
+        Objects.requireNonNull(id, "id");
+        Objects.requireNonNull(requiredTags, "requiredTags");
+        if (requiredTags.isEmpty()) {
+            return findById(id);
+        }
+        Map<String, String> filters = TagFilters.validated(requiredTags);
+
+        return Optional.ofNullable(secrets.get(id))
+                .filter(secret -> matchesAll(secret.tags(), filters));
+    }
+
+    @Override
     public List<Secret> findByTags(Map<String, String> tagFilters) {
         Map<String, String> filters = TagFilters.validated(tagFilters);
 
