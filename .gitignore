@@ -1,6 +1,8 @@
 # Maven build output
 target/
 
+test/
+
 # IDE
 .vscode/
 .idea/
